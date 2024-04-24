@@ -1,7 +1,7 @@
 # Modular-Biomedical-Sensor-Board-for-Education
 Modular Biomedical Sensor Board for Education, designed for the Department of Biomedical Engineering (BME) of the University of Arizona (UofA). The device (currently) can take the following physiological measurements:
 
---> Body Fat and Water Composition  --> Skin Impedance Sensor
+--> Body Fat and Water Composition  --> [Skin Impedance Sensor](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/tree/main/Sound%20Sensor)
 
 --> Temperature                     --> Temperature Sensor
 
