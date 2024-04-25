@@ -1,1 +1,6 @@
-This is a description for the Arduino Code
+This is a description for the Arduino Code. 
+
+The ESP32 receives a stream of bits coming from the audio Codec, using the I2S communication protocol. The stream is filtered using a IIR BPF, and later sent to ESPNow (or just the serial monitor, if needed). Since the implementation of this code is different from the other sensors, we include the [receiver code](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/blob/main/Sound%20Sensor/Arduino%20Code/Sound_receiver.ino), that allows to correctly receive the data with a secondary ESP32. 
+
+Similarly, we included a [Filter Designer](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/blob/main/Sound%20Sensor/Arduino%20Code/Filter_1.m), a very short and easy to use MATLAB file that allows to design an IIR filter of N order with a given cut-off frequency (or frequencies in case of BPF) and sampling frequency.
+
