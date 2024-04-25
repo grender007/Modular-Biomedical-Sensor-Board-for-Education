@@ -12,6 +12,7 @@ Modular Biomedical Sensor Board for Education, designed for the Department of Bi
 * [Digital Stethoscope Sensor](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/tree/main/Sound%20Sensor)
 
 Each one of the folders include the Arduino Code (that also enables wireless communication), the PCB files, and the corresponding insert for the casing.
+
 ![alt exterior](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/blob/main/Housing%20Models/exterior.png)
 
 # Project Point Design
