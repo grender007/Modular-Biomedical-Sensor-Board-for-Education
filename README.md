@@ -1,4 +1,4 @@
-# Modular-Biomedical-Sensor-Board-for-Education
+# Modular-Biomedical-Sensor-Board-for-Education (MediBrick 2000)
 Modular Biomedical Sensor Board for Education, designed for the Department of Biomedical Engineering (BME) of the University of Arizona (UofA). The device currently integrates five different sensor for physiological measurements:
 
 * [Skin Impedance Sensor](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/tree/main/Skin%20Impedance%20Sensor)
