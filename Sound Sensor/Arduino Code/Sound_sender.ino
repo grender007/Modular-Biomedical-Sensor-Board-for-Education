@@ -38,10 +38,10 @@ const float a_coefficients[] = { 1.0000,-2.6850, 2.6850,-1.2530, 0.2559};
 
 ESPNowStream now;
 StreamCopy copier_now(now, inFiltered);  // copies i2s_out_stream into i2s
-const char *peers[] = {"DC:54:75:C0:92:28"}; //Receiver 
+const char *peers[] = {"DC:54:75:C3:B8:92"};
 
- CsvOutput<int16_t> Serial_out(Serial);                                 // ASCII output stream 
- StreamCopy copier_output(Serial_out, inFiltered); 
+// CsvOutput<int16_t> Serial_out(Serial);                                 // ASCII output stream 
+// StreamCopy copier_output(Serial_out, inFiltered); 
 
 void setup() {
   // Setup logging
@@ -55,8 +55,7 @@ void setup() {
   Serial.println("I2C pin ...");
   my_pins.addI2C(PinFunction::CODEC, SCLPIN, SDAPIN, ES8388ADDR, I2CSPEED, myWire);
   Serial.println("I2S pin ...");
-  my_pins.addI2S(PinFunction::CODEC, MCLKPIN, BCLKPIN, WSPIN, DOPIN, DIPIN);
-
+  my_pins.addI2S(PinFunction::CODEC, MCLKPIN, BCLKPIN, WSPIN, DIPIN, DOPIN);
   Serial.println("Pins begin ..."); 
   my_pins.begin();
 
@@ -64,44 +63,50 @@ void setup() {
   // audio_board.begin();
   CodecConfig cfg;
       //No output to codec
-      cfg.output_device = DAC_OUTPUT_NONE;
+      cfg.output_device = DAC_OUTPUT_LINE1;
       //Mic input from adc channel 1
       cfg.input_device = ADC_INPUT_LINE1;  
-      //IS2 format
-      cfg.i2s.fmt = I2S_NORMAL;
       //Bits per sample (16 bits)                     
       cfg.i2s.bits = BIT_LENGTH_16BITS;
       //Sample Rate (44.1 kHz)
-    //cfg.i2s.rate = RATE_44K;
-      cfg.i2s.rate = RATE_8K;
+      cfg.i2s.rate = RATE_8K;     //cfg.i2s.rate = RATE_44K;
+      //Channels 2
+      //cfg.i2s.channels = CHANNELS2;
+      //Format
+      //cfg.i2s.fmt = I2S_NORMAL;
+      // codec is slave - microcontroller is master
+      //cfg.i2s.mode = MODE_SLAVE;
    audio_board.begin(cfg);
   //Additional ADC configuration ---> Everything else is in default mode (See datasheet)
       //set to mono mix in ADC channel 1 (lin1/Mic pin) --> 00001000 == 0x08 in ADCControl 3
-   es8388_write_reg(ES8388_ADCCONTROL3, 0x08);
+  es8388_write_reg(ES8388_ADCCONTROL3, 0x08);
+      //12 dB gain in ADC channel 1 (lin1/Mic pin) --> 01000100 == 0x44 in ADCControl 1
+ // es8388_write_reg(ES8388_ADCCONTROL1, 0x44);
 
   Serial.println("I2S begin ..."); 
   auto i2s_config = i2s_out_stream.defaultConfig(RXTX_MODE); //RXTX for douplex //RX for sink //TX for source
   i2s_config.copyFrom(audio_info);
   i2s_out_stream.begin(i2s_config); // this should apply I2C and I2S configuration
 
-  // Setup CSV
-    Serial.println("CSV begin...");
-    Serial_out.begin(audio_info);
+  // // Setup CSV
+  //   Serial.println("CSV begin...");
+  //   Serial_out.begin(audio_info);
 
   // Setup filter
   inFiltered.setFilter(0, new IIR<float>(b_coefficients, a_coefficients));
 
   // Setup ESP_NOW
-  auto now_cfg = now.defaultConfig();
-  now_cfg.mac_address = "DC:54:75:C0:92:2C";
-  now.begin(now_cfg);
+  auto now_config = now.defaultConfig();
+  now_config.mac_address = "DC:54:75:C3:B8:0C";
+  now.begin(now_config);
   now.addPeers(peers);
 
   Serial.println("Setup completed ...");
+  delay(5000);
 }
 
 // Arduino loop - copy sound to out
 void loop() { 
-  copier_output.copy();
-  //copier_now.copy();
+  //copier_output.copy();
+  copier_now.copy();
 }
