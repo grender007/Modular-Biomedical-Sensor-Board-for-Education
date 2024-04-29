@@ -4,4 +4,4 @@ The code is also built to allow the module to be put into deepsleep, where holdi
 
 The module can be calibrated using the GUI. Entering resistor values measured while building the device will allow for the sensor to be recalibrated. The sensor module will use the new resistor values until the module is turned off. New values can be sent at any time using the GUI.
 
-[!alt Temp Sensor](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/blob/main/Temperature%20Sensor/PCB/Temp%20PCB%20Top.png)
+![alt Temp Sensor](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/blob/main/Temperature%20Sensor/PCB/Temp%20PCB%20Top.png)
