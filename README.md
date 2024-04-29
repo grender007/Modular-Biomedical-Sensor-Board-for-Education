@@ -31,5 +31,5 @@ All the modules can be placed on the [charging station](https://github.com/grend
 ![alt interior2](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/blob/main/Housing%20Models/interior2.png)
 
 # Assembly
-The detailed asssembly process and the required parts for the device are shown in the Documents folder.
+The detailed asssembly process and the required parts for the device are shown in the [Documents folder](https://github.com/grender007/Modular-Biomedical-Sensor-Board-for-Education/tree/main/User%20Manual%20and%20Other%20Documents).
 
